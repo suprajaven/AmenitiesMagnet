@@ -37,16 +37,16 @@ Built on ImmoScout24 listings data, the project trains city-stratified XGBoost a
 ## ***Members***   
 *T. Buttrick · A. Diallo · D. Siachras · N. Gala · S. Venkatesh*
 
-## ***Directory Structure:***
+## ***Directory Structure:*** 
 ### Model Building
-1. [Data](https://github.gatech.edu/CSE6242_Project/Data) - *the building blocks of our empire!*
-2. [Code](https://github.gatech.edu/CSE6242_Project/Code) - *where the magic happens!* 
-3. [Visualizations](https://github.gatech.edu/CSE6242_Project/Visualizations) - *the home of all our pretty graphs.*
+1. [Data](https://github.gatech.edu/tbuttrick3/CSE6242_Project/Data) - *the building blocks of our empire!*
+2. [Code](https://github.gatech.edu/tbuttrick3/CSE6242_Project/Code) - *where the magic happens!* 
+3. [Visualizations](https://github.gatech.edu/tbuttrick3/CSE6242_Project/Visualizations) - *the home of all our pretty graphs.*
 
 
 ### Reporting:
-1. [Project Proposal](https://github.gatech.edu/CSE6242_Project/Project%20Proposal) - *where the silly idea started.*
-2. [Proposal Video](https://github.gatech.edu/CSE6242_Project/Proposal%20Presentation) - *where we first spoke about the silly idea.* 
-3. [Progress Report](https://github.gatech.edu/CSE6242_Project/Progress%20Report) - *when we realized what we had got ourselves into.*
-4. [Final Report](https://github.gatech.edu/CSE6242_Project/Final%20Report) - *We cried, worked, cried some more, worked again, on repeat.*
-5. [Final Video](https://github.gatech.edu/CSE6242_Project/Final%20Presentation%20Slides) - *The light at the end of the tunnel*
+1. [Project Proposal](https://github.gatech.edu/tbuttrick3/CSE6242_Project/Project%20Proposal) - *where the silly idea started.*
+2. [Proposal Video](https://github.gatech.edu/tbuttrick3/CSE6242_Project/Proposal%20Presentation) - *where we first spoke about the silly idea.* 
+3. [Progress Report](https://github.gatech.edu/tbuttrick3/CSE6242_Project/Progress%20Report) - *when we realized what we had got ourselves into.*
+4. [Final Report](https://github.gatech.edu/tbuttrick3/CSE6242_Project/Final%20Report) - *We cried, worked, cried some more, worked again, on repeat.*
+5. [Final Video](https://github.gatech.edu/tbuttrick3/CSE6242_Project/Final%20Presentation%20Slides) - *The light at the end of the tunnel*
