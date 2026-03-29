@@ -41,7 +41,8 @@ Built on ImmoScout24 listings data, the project trains city-stratified XGBoost a
 ### Model Building
 1. [Data](https://github.gatech.edu/tbuttrick3/CSE6242_Project/tree/c53b4021a063e9c426a27100629bf621309d130c/Data) - *the building blocks of our empire!*
 2. [Code](https://github.gatech.edu/tbuttrick3/CSE6242_Project/tree/c53b4021a063e9c426a27100629bf621309d130c/Code) - *where the magic happens!* 
-3. [Visualizations](https://github.gatech.edu/tbuttrick3/CSE6242_Project/tree/c53b4021a063e9c426a27100629bf621309d130c/Visualizations) - *the home of all our pretty graphs.*
+3. [Analysis](https://github.gatech.edu/tbuttrick3/CSE6242_Project/tree/c53b4021a063e9c426a27100629bf621309d130c/Analysis) - *EDA notebooks, modelling scripts, and writeups live here.*
+4. [Visualizations](https://github.gatech.edu/tbuttrick3/CSE6242_Project/tree/c53b4021a063e9c426a27100629bf621309d130c/Visualizations) - *the home of all our pretty graphs.*
 
 
 ### Reporting:
