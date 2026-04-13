@@ -1,0 +1,114 @@
+{
+  "Nordrhein Westfalen": {
+    "file": "xgb_state_Nordrhein_Westfalen.json",
+    "rmse": 0.1728,
+    "r2": 0.7197,
+    "n_train": 50258,
+    "best_iter": 999
+  },
+  "Rheinland Pfalz": {
+    "file": "xgb_state_Rheinland_Pfalz.json",
+    "rmse": 0.1805,
+    "r2": 0.6998,
+    "n_train": 6689,
+    "best_iter": 415
+  },
+  "Sachsen": {
+    "file": "xgb_state_Sachsen.json",
+    "rmse": 0.1405,
+    "r2": 0.7833,
+    "n_train": 46494,
+    "best_iter": 518
+  },
+  "Bremen": {
+    "file": "xgb_state_Bremen.json",
+    "rmse": 0.1589,
+    "r2": 0.7716,
+    "n_train": 2369,
+    "best_iter": 136
+  },
+  "Schleswig Holstein": {
+    "file": "xgb_state_Schleswig_Holstein.json",
+    "rmse": 0.1811,
+    "r2": 0.5794,
+    "n_train": 5324,
+    "best_iter": 282
+  },
+  "Baden W\u00fcrttemberg": {
+    "file": "xgb_state_Baden_W\u00fcrttemberg.json",
+    "rmse": 0.2021,
+    "r2": 0.7049,
+    "n_train": 12843,
+    "best_iter": 694
+  },
+  "Th\u00fcringen": {
+    "file": "xgb_state_Th\u00fcringen.json",
+    "rmse": 0.1475,
+    "r2": 0.6362,
+    "n_train": 6709,
+    "best_iter": 410
+  },
+  "Hessen": {
+    "file": "xgb_state_Hessen.json",
+    "rmse": 0.2033,
+    "r2": 0.7695,
+    "n_train": 14268,
+    "best_iter": 570
+  },
+  "Niedersachsen": {
+    "file": "xgb_state_Niedersachsen.json",
+    "rmse": 0.189,
+    "r2": 0.6507,
+    "n_train": 13238,
+    "best_iter": 999
+  },
+  "Bayern": {
+    "file": "xgb_state_Bayern.json",
+    "rmse": 0.1946,
+    "r2": 0.8283,
+    "n_train": 17252,
+    "best_iter": 997
+  },
+  "Hamburg": {
+    "file": "xgb_state_Hamburg.json",
+    "rmse": 0.2246,
+    "r2": 0.4191,
+    "n_train": 3006,
+    "best_iter": 197
+  },
+  "Sachsen Anhalt": {
+    "file": "xgb_state_Sachsen_Anhalt.json",
+    "rmse": 0.1359,
+    "r2": 0.5759,
+    "n_train": 16088,
+    "best_iter": 324
+  },
+  "Mecklenburg Vorpommern": {
+    "file": "xgb_state_Mecklenburg_Vorpommern.json",
+    "rmse": 0.1595,
+    "r2": 0.7088,
+    "n_train": 5305,
+    "best_iter": 257
+  },
+  "Berlin": {
+    "file": "xgb_state_Berlin.json",
+    "rmse": 0.2193,
+    "r2": 0.622,
+    "n_train": 8314,
+    "best_iter": 422
+  },
+  "Brandenburg": {
+    "file": "xgb_state_Brandenburg.json",
+    "rmse": 0.1662,
+    "r2": 0.7543,
+    "n_train": 5555,
+    "best_iter": 335
+  },
+  "Saarland": {
+    "file": "xgb_state_Saarland.json",
+    "rmse": 0.1883,
+    "r2": 0.4371,
+    "n_train": 1136,
+    "best_iter": 66
+  }
+}

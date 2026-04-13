@@ -1,0 +1,151 @@
+city,rank,feature,mean_abs_shap
+Leipzig,1,building_age,0.047323
+Leipzig,2,interior_score,0.035441
+Leipzig,3,noRooms,0.034528
+Leipzig,4,condition_score,0.033602
+Leipzig,5,serviceCharge,0.033548
+Chemnitz,1,building_age,0.02969
+Chemnitz,2,condition_score,0.028023
+Chemnitz,3,noRooms,0.022624
+Chemnitz,4,serviceCharge,0.020042
+Chemnitz,5,hasKitchen,0.019952
+Berlin,1,hasKitchen,0.071048
+Berlin,2,building_age,0.060521
+Berlin,3,noRooms,0.05315
+Berlin,4,condition_score,0.050271
+Berlin,5,interior_score,0.042408
+Dresden,1,building_age,0.061507
+Dresden,2,noRooms,0.039752
+Dresden,3,condition_score,0.033498
+Dresden,4,hasKitchen,0.032289
+Dresden,5,interior_score,0.027721
+Magdeburg,1,hasKitchen,0.032353
+Magdeburg,2,noRooms,0.031708
+Magdeburg,3,interior_score,0.029641
+Magdeburg,4,building_age,0.026261
+Magdeburg,5,condition_score,0.025119
+Halle Saale,1,noRooms,0.050858
+Halle Saale,2,building_age,0.045467
+Halle Saale,3,hasKitchen,0.036238
+Halle Saale,4,interior_score,0.030031
+Halle Saale,5,serviceCharge,0.027116
+München,1,noRooms,0.076264
+München,2,hasKitchen,0.067158
+München,3,serviceCharge,0.059368
+München,4,building_age,0.053697
+München,5,interior_score,0.04657
+Essen,1,hasKitchen,0.042241
+Essen,2,noRooms,0.036655
+Essen,3,interior_score,0.03077
+Essen,4,building_age,0.029178
+Essen,5,condition_score,0.02821
+Frankfurt am Main,1,noRooms,0.081521
+Frankfurt am Main,2,hasKitchen,0.077217
+Frankfurt am Main,3,serviceCharge,0.068723
+Frankfurt am Main,4,interior_score,0.042857
+Frankfurt am Main,5,building_age,0.039149
+Düsseldorf,1,interior_score,0.051418
+Düsseldorf,2,hasKitchen,0.048067
+Düsseldorf,3,noRooms,0.0437
+Düsseldorf,4,building_age,0.034777
+Düsseldorf,5,condition_score,0.03184
+Hamburg,1,building_age,0.059708
+Hamburg,2,hasKitchen,0.052794
+Hamburg,3,noRooms,0.047859
+Hamburg,4,condition_score,0.03855
+Hamburg,5,serviceCharge,0.03465
+Duisburg,1,hasKitchen,0.0364
+Duisburg,2,noRooms,0.02978
+Duisburg,3,interior_score,0.029542
+Duisburg,4,condition_score,0.027695
+Duisburg,5,building_age,0.021727
+Mittelsachsen Kreis,1,noRooms,0.036225
+Mittelsachsen Kreis,2,building_age,0.034929
+Mittelsachsen Kreis,3,interior_score,0.023826
+Mittelsachsen Kreis,4,condition_score,0.023711
+Mittelsachsen Kreis,5,hasKitchen,0.023588
+Dortmund,1,noRooms,0.038864
+Dortmund,2,building_age,0.038303
+Dortmund,3,hasKitchen,0.036367
+Dortmund,4,interior_score,0.034841
+Dortmund,5,condition_score,0.030446
+Gelsenkirchen,1,hasKitchen,0.035329
+Gelsenkirchen,2,noRooms,0.034142
+Gelsenkirchen,3,interior_score,0.027947
+Gelsenkirchen,4,condition_score,0.027943
+Gelsenkirchen,5,building_age,0.017707
+Köln,1,noRooms,0.077117
+Köln,2,hasKitchen,0.048436
+Köln,3,building_age,0.039661
+Köln,4,interior_score,0.034332
+Köln,5,condition_score,0.030907
+Recklinghausen Kreis,1,noRooms,0.04016
+Recklinghausen Kreis,2,hasKitchen,0.036325
+Recklinghausen Kreis,3,building_age,0.034068
+Recklinghausen Kreis,4,interior_score,0.030123
+Recklinghausen Kreis,5,condition_score,0.028314
+Zwickau,1,building_age,0.029755
+Zwickau,2,noRooms,0.028451
+Zwickau,3,condition_score,0.027524
+Zwickau,4,interior_score,0.026136
+Zwickau,5,hasKitchen,0.023472
+Wuppertal,1,noRooms,0.043384
+Wuppertal,2,hasKitchen,0.040731
+Wuppertal,3,interior_score,0.036839
+Wuppertal,4,building_age,0.032687
+Wuppertal,5,condition_score,0.030174
+Zwickau Kreis,1,building_age,0.034593
+Zwickau Kreis,2,noRooms,0.026364
+Zwickau Kreis,3,condition_score,0.026324
+Zwickau Kreis,4,interior_score,0.025061
+Zwickau Kreis,5,lift,0.023171
+Leipzig Kreis,1,building_age,0.03994
+Leipzig Kreis,2,noRooms,0.030621
+Leipzig Kreis,3,serviceCharge,0.02816
+Leipzig Kreis,4,condition_score,0.027622
+Leipzig Kreis,5,interior_score,0.026209
+Meißen Kreis,1,building_age,0.034594
+Meißen Kreis,2,hasKitchen,0.025453
+Meißen Kreis,3,noRooms,0.025437
+Meißen Kreis,4,interior_score,0.025388
+Meißen Kreis,5,condition_score,0.024778
+Sächsische Schweiz Osterzgebirge Kreis,1,building_age,0.033423
+Sächsische Schweiz Osterzgebirge Kreis,2,noRooms,0.028968
+Sächsische Schweiz Osterzgebirge Kreis,3,interior_score,0.025002
+Sächsische Schweiz Osterzgebirge Kreis,4,condition_score,0.024317
+Sächsische Schweiz Osterzgebirge Kreis,5,hasKitchen,0.023091
+Bochum,1,noRooms,0.041616
+Bochum,2,hasKitchen,0.041329
+Bochum,3,interior_score,0.032971
+Bochum,4,condition_score,0.026889
+Bochum,5,building_age,0.023554
+Bremen,1,hasKitchen,0.054548
+Bremen,2,noRooms,0.04697
+Bremen,3,building_age,0.039764
+Bremen,4,condition_score,0.032683
+Bremen,5,interior_score,0.028825
+Gera,1,building_age,0.035521
+Gera,2,noRooms,0.031282
+Gera,3,interior_score,0.027
+Gera,4,hasKitchen,0.026963
+Gera,5,lift,0.024603
+Plauen,1,building_age,0.03943
+Plauen,2,noRooms,0.029729
+Plauen,3,interior_score,0.029383
+Plauen,4,lift,0.024329
+Plauen,5,hasKitchen,0.023688
+Aachen,1,noRooms,0.055689
+Aachen,2,hasKitchen,0.053679
+Aachen,3,building_age,0.042152
+Aachen,4,interior_score,0.037767
+Aachen,5,condition_score,0.034962
+Nürnberg,1,noRooms,0.063831
+Nürnberg,2,serviceCharge,0.061382
+Nürnberg,3,hasKitchen,0.047755
+Nürnberg,4,building_age,0.03341
+Nürnberg,5,condition_score,0.027206
+Hannover,1,hasKitchen,0.048936
+Hannover,2,building_age,0.046698
+Hannover,3,noRooms,0.04181
+Hannover,4,condition_score,0.040026
+Hannover,5,interior_score,0.038015

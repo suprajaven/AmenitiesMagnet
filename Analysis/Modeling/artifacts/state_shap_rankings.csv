@@ -1,0 +1,81 @@
+state,rank,feature,mean_abs_shap
+Nordrhein Westfalen,1,noRooms,0.041816
+Nordrhein Westfalen,2,hasKitchen,0.039693
+Nordrhein Westfalen,3,building_age,0.03739
+Nordrhein Westfalen,4,interior_score,0.032233
+Nordrhein Westfalen,5,condition_score,0.031515
+Sachsen,1,building_age,0.037913
+Sachsen,2,noRooms,0.034102
+Sachsen,3,condition_score,0.028675
+Sachsen,4,interior_score,0.025217
+Sachsen,5,hasKitchen,0.025166
+Bayern,1,noRooms,0.0645
+Bayern,2,building_age,0.049886
+Bayern,3,hasKitchen,0.047425
+Bayern,4,serviceCharge,0.038864
+Bayern,5,condition_score,0.036072
+Sachsen Anhalt,1,noRooms,0.038685
+Sachsen Anhalt,2,building_age,0.036982
+Sachsen Anhalt,3,interior_score,0.029049
+Sachsen Anhalt,4,hasKitchen,0.028959
+Sachsen Anhalt,5,serviceCharge,0.024775
+Hessen,1,noRooms,0.065796
+Hessen,2,hasKitchen,0.050593
+Hessen,3,building_age,0.041726
+Hessen,4,serviceCharge,0.039113
+Hessen,5,condition_score,0.032203
+Niedersachsen,1,noRooms,0.049813
+Niedersachsen,2,hasKitchen,0.043545
+Niedersachsen,3,building_age,0.041085
+Niedersachsen,4,condition_score,0.034111
+Niedersachsen,5,interior_score,0.030424
+Baden Württemberg,1,noRooms,0.067736
+Baden Württemberg,2,hasKitchen,0.055034
+Baden Württemberg,3,building_age,0.047814
+Baden Württemberg,4,serviceCharge,0.042388
+Baden Württemberg,5,interior_score,0.037724
+Berlin,1,hasKitchen,0.07023
+Berlin,2,building_age,0.062205
+Berlin,3,noRooms,0.051857
+Berlin,4,condition_score,0.047211
+Berlin,5,interior_score,0.043175
+Thüringen,1,noRooms,0.034799
+Thüringen,2,building_age,0.033651
+Thüringen,3,hasKitchen,0.032339
+Thüringen,4,interior_score,0.029086
+Thüringen,5,condition_score,0.02387
+Rheinland Pfalz,1,noRooms,0.060377
+Rheinland Pfalz,2,hasKitchen,0.04428
+Rheinland Pfalz,3,building_age,0.04347
+Rheinland Pfalz,4,interior_score,0.035465
+Rheinland Pfalz,5,condition_score,0.034513
+Brandenburg,1,building_age,0.050947
+Brandenburg,2,hasKitchen,0.042982
+Brandenburg,3,noRooms,0.040231
+Brandenburg,4,interior_score,0.031018
+Brandenburg,5,condition_score,0.028314
+Mecklenburg Vorpommern,1,building_age,0.05788
+Mecklenburg Vorpommern,2,noRooms,0.050439
+Mecklenburg Vorpommern,3,hasKitchen,0.04606
+Mecklenburg Vorpommern,4,condition_score,0.029041
+Mecklenburg Vorpommern,5,interior_score,0.028156
+Schleswig Holstein,1,noRooms,0.048156
+Schleswig Holstein,2,hasKitchen,0.043395
+Schleswig Holstein,3,building_age,0.042381
+Schleswig Holstein,4,condition_score,0.033441
+Schleswig Holstein,5,interior_score,0.029719
+Hamburg,1,building_age,0.061827
+Hamburg,2,hasKitchen,0.053919
+Hamburg,3,noRooms,0.048741
+Hamburg,4,condition_score,0.037813
+Hamburg,5,serviceCharge,0.037126
+Bremen,1,hasKitchen,0.051328
+Bremen,2,noRooms,0.044688
+Bremen,3,building_age,0.04101
+Bremen,4,condition_score,0.037753
+Bremen,5,interior_score,0.027798
+Saarland,1,noRooms,0.060863
+Saarland,2,hasKitchen,0.045179
+Saarland,3,building_age,0.041892
+Saarland,4,condition_score,0.032437
+Saarland,5,interior_score,0.02753
