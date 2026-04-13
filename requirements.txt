@@ -2,3 +2,9 @@ streamlit
 pandas
 plotly
 numpy
+scikit-learn
+xgboost
+shap
+faiss-cpu
+joblib
+pyarrow
