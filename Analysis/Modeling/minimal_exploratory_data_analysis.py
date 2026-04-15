@@ -2,7 +2,7 @@
 ============================================================
 AMENITIES MAGNET — : EXPLORATORY DATA ANALYSIS
 ============================================================
-Project : CSE 6242 Team #146
+Project : Amenities Magnet
 Target  : baseRent (primary), price_per_sqm (log-transformed, secondary)
 Data    : immo_data_clean.csv  (268,632 rows, 33 columns + engineered features)
 
