@@ -25,7 +25,6 @@ from model_utils import (
 )
 from utils import comparable_listing_estimate, load_data, load_model_data
 
-# ── Page ──────────────────────────────────────────────────────
 st.title("Rental Price Estimator")
 st.caption("Get an instant price estimate for any apartment in Germany")
 
@@ -49,24 +48,24 @@ left, right = st.columns([1.2, 1])
 
 with left:
     st.subheader("Your apartment")
-    city = st.selectbox("📍 City", sorted(raw_df["city"].dropna().unique()))
+    city = st.selectbox("City", sorted(raw_df["city"].dropna().unique()))
     state = city_state_map.get(city)
 
-    size      = st.slider("📐 Size (sqm)", 20, 200, 70)
-    rooms     = st.slider("🛏️ Number of rooms", 1, 8, 2)
+    size      = st.slider("Size (sqm)", 20, 200, 70)
+    rooms     = st.slider("Number of rooms", 1, 8, 2)
     amenities = st.slider(
-        "✨ Amenities (0–6)",
+        "Amenities (0-6)",
         0, 6, 3,
         help="Count of features present: balcony, garden, cellar, new build, kitchen, lift",
     )
-    has_kitchen = st.toggle("🍳 Has kitchen",  value=True)
-    has_lift    = st.toggle("🛗  Has lift",     value=False)
+    has_kitchen = st.toggle("Has kitchen",  value=True)
+    has_lift    = st.toggle("Has lift",     value=False)
 
-    with st.expander("⚙️ More details — makes the estimate more accurate"):
+    with st.expander("More details"):
         building_age    = st.slider("Building age (years)", 0, 150, 40)
-        service_charge  = st.number_input("Monthly service charge (€)", 0, 1000, 120, step=10)
-        condition_score = st.slider("Property condition  (0 = poor · 9 = brand new)", 0, 9, 5)
-        interior_score  = st.slider("Interior quality  (1 = basic · 4 = luxury)", 1, 4, 2)
+        service_charge  = st.number_input("Monthly service charge (EUR)", 0, 1000, 120, step=10)
+        condition_score = st.slider("Property condition (0 = poor, 9 = brand new)", 0, 9, 5)
+        interior_score  = st.slider("Interior quality (1 = basic, 4 = luxury)", 1, 4, 2)
         condition     = st.selectbox("Condition",        label_opts.get("condition",    ["unknown"]))
         interior_qual = st.selectbox("Interior quality", label_opts.get("interiorQual", ["normal"]))
         type_of_flat  = st.selectbox("Apartment type",   label_opts.get("typeOfFlat",   ["apartment"]))
@@ -93,7 +92,6 @@ input_dict = {
     "city": city, "state": state or "unknown",
 }
 
-# ── Predictions ───────────────────────────────────────────────
 result   = predict_price(input_dict, state=state)
 estimate, comparable_count = comparable_listing_estimate(
     raw_df, city=city, size=size, rooms=rooms,
@@ -109,23 +107,23 @@ with right:
     st.subheader("Price estimate")
 
     if est_monthly:
-        st.metric("💶 Estimated monthly rent", f"€ {est_monthly:,.0f} / month",
-                  help=f"Based on €{price_global:.2f}/sqm × {size} sqm")
-        st.metric("📊 Price per sqm", f"€ {price_global:.2f} / sqm")
+        st.metric("Estimated monthly rent", f"EUR {est_monthly:,.0f} / month",
+                  help=f"Based on EUR {price_global:.2f}/sqm x {size} sqm")
+        st.metric("Price per sqm", f"EUR {price_global:.2f} / sqm")
 
     st.divider()
 
     if price_global and city_median_ppsm:
         diff_pct = ((price_global - city_median_ppsm) / city_median_ppsm) * 100
         badge = (
-            "🟢 Below market average — good deal" if diff_pct < -5 else
-            "🟡 Around market average"             if diff_pct <=  5 else
-            "🔴 Above market average"
+            "Below market average" if diff_pct < -5 else
+            "Around market average" if diff_pct <=  5 else
+            "Above market average"
         )
         st.markdown(f"**{badge}**")
 
-    st.metric("🏙️ City average rent",  f"€ {city_median_rent:,.0f} / month")
-    st.metric("📐 City average €/sqm", f"€ {city_median_ppsm:.2f}")
+    st.metric("City average rent",  f"EUR {city_median_rent:,.0f} / month")
+    st.metric("City average EUR/sqm", f"EUR {city_median_ppsm:.2f}")
     if estimate:
         st.caption(f"Based on {comparable_count:,} similar listings in {city}")
 
@@ -134,9 +132,9 @@ with right:
         direction = ("slightly higher" if diff > 0.05 else
                      "slightly lower"  if diff < -0.05 else "similar")
         st.info(
-            f"📌 **{state} insight:** Local data suggests prices here are "
+            f"**{state} insight:** Local data suggests prices here are "
             f"{direction} than the national estimate "
-            f"(€{price_state:.2f}/sqm vs €{price_global:.2f}/sqm)."
+            f"(EUR {price_state:.2f}/sqm vs EUR {price_global:.2f}/sqm)."
         )
 
 st.divider()
@@ -199,14 +197,11 @@ with dist_col:
 
 st.divider()
 
-# ══════════════════════════════════════════════════════════════
-# SIMILAR LISTINGS
-# ══════════════════════════════════════════════════════════════
 st.subheader("Find similar apartments")
 
 tab_desc, tab_feat = st.tabs([
-    "🔍 Describe what you want",
-    "🎛️ Match by apartment features",
+    "Describe what you want",
+    "Match by apartment features",
 ])
 
 with tab_desc:
@@ -229,9 +224,9 @@ with tab_desc:
         same_city_only = st.checkbox("Same city only", value=True)
         k_results      = st.selectbox("Show", [5, 8, 10], index=0, key="k_desc")
 
-    if st.button("🔍 Find apartments", use_container_width=True, key="btn_desc"):
+    if st.button("Find apartments", use_container_width=True, key="btn_desc"):
         if query.strip():
-            with st.spinner("Searching through 268,000 listings …"):
+            with st.spinner("Searching through 268,000 listings..."):
                 results = find_similar_by_description(
                     raw_df,
                     query=query,
@@ -248,7 +243,7 @@ with tab_desc:
                     "or uncheck 'Same city only'."
                 )
         else:
-            st.info("👆 Type a description above and click Find apartments.")
+            st.info("Type a description above and click Find apartments.")
 
 with tab_feat:
     st.markdown(
@@ -257,8 +252,8 @@ with tab_feat:
     )
     k_feat = st.selectbox("Number of results", [5, 8, 10], index=0, key="k_feat")
 
-    if st.button("🎛️ Find similar apartments", use_container_width=True, key="btn_feat"):
-        with st.spinner("Searching …"):
+    if st.button("Find similar apartments", use_container_width=True, key="btn_feat"):
+        with st.spinner("Searching..."):
             results_feat = find_similar_by_features(
                 raw_df, city=city, rooms=rooms,
                 amenity_score=amenities, has_kitchen=int(has_kitchen),
@@ -267,7 +262,7 @@ with tab_feat:
         if not results_feat.empty:
             st.success(f"Found {len(results_feat)} similar apartments in {city}")
             st.dataframe(results_feat, use_container_width=True, hide_index=True)
-            st.caption("Ranked by similarity to your selected profile · Data: ImmoScout24 2018–2020")
+            st.caption("Ranked by similarity to your selected profile. Data: ImmoScout24 2018-2020")
         else:
             st.info("No close matches found in this city. Try a different city.")
 

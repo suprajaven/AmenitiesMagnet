@@ -5,7 +5,7 @@ import streamlit as st
 from utils import MODEL_NUMERIC_FEATURES, load_model_data, make_quantile_bins
 
 
-st.title("Modeling Insights (TBupdated)")
+st.title("Modeling Insights")
 st.caption("Transformed modelling dataset and feature-level explanation patterns")
 
 model_df = load_model_data()

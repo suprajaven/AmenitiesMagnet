@@ -4,7 +4,7 @@ import streamlit as st
 from utils import load_data, prepare_state_market_view
 
 
-st.title("Map View-tobeupd")
+st.title("Map View")
 st.caption("State-level market map for Germany using aggregated listing metrics")
 
 df = load_data()
