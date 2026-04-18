@@ -1,37 +1,29 @@
 import streamlit as st
 
-from utils import MODEL_CATEGORICAL_FEATURES, MODEL_NUMERIC_FEATURES
-
 
 st.set_page_config(page_title="Amenities Magnet", layout="wide")
 
 st.title("Amenities Magnet")
-st.caption("Rental price intelligence for Germany's housing markets")
+st.caption("Rental price intelligence for Germany")
 
-hero_left, hero_right = st.columns([1.4, 1])
+metric_cols = st.columns(3)
+metric_cols[0].metric("Listings", "268,632")
+metric_cols[1].metric("Cities", "419")
+metric_cols[2].metric("Markets", "16 states")
 
-with hero_left:
-    st.subheader("Germany rental market overview")
-    st.markdown(
-        """
-        Compare regional rental patterns, inspect the strongest market drivers,
-        and benchmark property profiles against similar listings.
-        """
+nav1, nav2, nav3 = st.columns(3)
+nav1.info("Map View")
+nav2.info("Explore Listings")
+nav3.info("Rental Price Estimator")
+
+if hasattr(st, "page_link"):
+    link1, link2, link3, link4 = st.columns(4)
+    link1.page_link("pages/map.py", label="Open Map")
+    link2.page_link("pages/explore.py", label="Explore Data")
+    link3.page_link("pages/predict.py", label="Open Predictor")
+    link4.page_link("pages/insights.py", label="Model Insights")
+
+with st.expander("About"):
+    st.write(
+        "Explore rental patterns, estimate apartment prices, and compare similar listings across Germany."
     )
-
-with hero_right:
-    st.metric("Listings", "268,632")
-    st.metric("Modeling rows", "268,568")
-    st.metric("Markets", "419 cities")
-
-st.divider()
-
-col1, col2 = st.columns(2)
-
-with col1:
-    st.subheader("Numeric features")
-    st.selectbox("Feature", MODEL_NUMERIC_FEATURES, key="numeric_feature_home")
-
-with col2:
-    st.subheader("Categorical features")
-    st.selectbox("Feature ", MODEL_CATEGORICAL_FEATURES, key="categorical_feature_home")

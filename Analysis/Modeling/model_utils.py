@@ -4,13 +4,18 @@ TF-IDF similarity search uses scikit-learn.
 
 from pathlib import Path
 import json, warnings
+import tempfile
 import numpy as np
 import pandas as pd
 import joblib
-import xgboost as xgb
 import streamlit as st
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+
+try:
+    import xgboost as xgb
+except ModuleNotFoundError:
+    xgb = None
 
 warnings.filterwarnings("ignore")
 
@@ -136,15 +141,40 @@ def _load_preprocessor():
 
 @st.cache_resource(show_spinner=False)
 def _load_global_model():
+    if xgb is None:
+        return None
     p = ARTIFACT_DIR / "xgb_global.json"
     if not p.exists():
         return None
-    m = xgb.XGBRegressor()
-    m.load_model(str(p))
-    return m
+    return _safe_load_xgb_model(p)
+
+
+def _safe_load_xgb_model(path: Path):
+    model = xgb.XGBRegressor()
+    try:
+        model.load_model(str(path))
+        return model
+    except Exception:
+        raw = path.read_bytes()
+        cleaned = raw.lstrip()
+        if cleaned == raw or not cleaned.startswith(b"{"):
+            return None
+
+        with tempfile.NamedTemporaryFile(suffix=path.suffix, delete=False) as tmp:
+            tmp.write(cleaned)
+            tmp_path = tmp.name
+
+        retry_model = xgb.XGBRegressor()
+        try:
+            retry_model.load_model(tmp_path)
+            return retry_model
+        except Exception:
+            return None
 
 @st.cache_resource(show_spinner=False)
 def _load_state_models():
+    if xgb is None:
+        return {}
     rp = ARTIFACT_DIR / "state_model_registry.json"
     if not rp.exists():
         return {}
@@ -154,9 +184,9 @@ def _load_state_models():
     for state, meta in registry.items():
         mp = ARTIFACT_DIR / meta["file"]
         if mp.exists():
-            m = xgb.XGBRegressor()
-            m.load_model(str(mp))
-            models[state] = {"model": m, **{k: v for k, v in meta.items() if k != "model"}}
+            m = _safe_load_xgb_model(mp)
+            if m is not None:
+                models[state] = {"model": m, **{k: v for k, v in meta.items() if k != "model"}}
     return models
 
 @st.cache_data(show_spinner=False)
@@ -177,6 +207,8 @@ def _load_label_encoders():
 # ── Public API ────────────────────────────────────────────────
 
 def artifacts_ready() -> bool:
+    if xgb is None:
+        return False
     required = ["xgb_global.json", "preprocessor.pkl",
                 "state_shap_rankings.csv", "city_shap_rankings.csv"]
     return all((ARTIFACT_DIR / f).exists() for f in required)
