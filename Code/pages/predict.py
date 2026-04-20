@@ -38,11 +38,6 @@ FEATURE_LABELS = {
 st.title("Rental Price Estimator")
 st.caption("Estimate rent and compare similar apartments")
 
-card1, card2, card3 = st.columns(3)
-card1.metric("Section 1", "Estimate")
-card2.metric("Section 2", "Drivers")
-card3.metric("Section 3", "Matches")
-
 raw_df = load_data()
 
 if not artifacts_ready():
@@ -60,7 +55,7 @@ city_state_map = (
     .to_dict()
 )
 
-left, right = st.columns([1.15, 1])
+left, right = st.columns([1, 1.2])
 
 with left:
     st.subheader("Apartment details")
@@ -69,15 +64,28 @@ with left:
 
     size = st.slider("Size (sqm)", 20, 200, 70)
     rooms = st.slider("Number of rooms", 1, 8, 2)
-    amenities = st.slider(
-        "Amenities (0-6)",
-        0,
-        6,
-        3,
-        help="Count of features present: balcony, garden, cellar, new build, kitchen, lift",
+
+    st.markdown("**Amenities**")
+    amenity_col1, amenity_col2, amenity_col3 = st.columns(3)
+    with amenity_col1:
+        has_balcony = st.checkbox("Balcony", value=True)
+        has_cellar = st.checkbox("Cellar", value=True)
+    with amenity_col2:
+        has_garden = st.checkbox("Garden", value=False)
+        has_kitchen = st.checkbox("Kitchen", value=True)
+    with amenity_col3:
+        is_new_build = st.checkbox("New build", value=False)
+        has_lift = st.checkbox("Lift", value=False)
+
+    amenities = int(
+        has_balcony
+        + has_cellar
+        + has_garden
+        + has_kitchen
+        + has_lift
+        + is_new_build
     )
-    has_kitchen = st.toggle("Has kitchen", value=True)
-    has_lift = st.toggle("Has lift", value=False)
+    st.caption(f"Amenities selected: {amenities}/6")
 
     with st.expander("Open advanced property details"):
         building_age = st.slider("Building age (years)", 0, 150, 40)
@@ -140,8 +148,8 @@ estimate, comparable_count = comparable_listing_estimate(
     has_kitchen=int(has_kitchen),
     lift=int(has_lift),
 )
-city_median_rent = raw_df.loc[raw_df["city"] == city, "baseRent"].median()
-city_median_ppsm = raw_df.loc[raw_df["city"] == city, "price_per_sqm"].median()
+city_mean_rent = raw_df.loc[raw_df["city"] == city, "baseRent"].mean()
+city_mean_ppsm = raw_df.loc[raw_df["city"] == city, "price_per_sqm"].mean()
 price_global = result["price_per_sqm_global"]
 price_state = result["price_per_sqm_state"]
 est_monthly = round(price_global * size, 0) if price_global else None
@@ -149,29 +157,24 @@ est_monthly = round(price_global * size, 0) if price_global else None
 with right:
     st.subheader("Estimate")
 
-    summary_col1, summary_col2 = st.columns(2)
-    with summary_col1:
-        if est_monthly:
-            st.metric(
-                "Estimated monthly rent",
-                f"EUR {est_monthly:,.0f} / month",
-                help=f"Based on EUR {price_global:.2f}/sqm x {size} sqm",
-            )
-        st.metric("City average rent", f"EUR {city_median_rent:,.0f} / month")
+    if est_monthly:
+        st.metric(
+            "Estimated rent",
+            f"EUR {est_monthly:,.0f} / month",
+            help=f"Based on EUR {price_global:.2f}/sqm x {size} sqm",
+        )
+    st.metric("Price per sqm", f"EUR {price_global:.2f} / sqm")
+    st.metric("City average rent", f"EUR {city_mean_rent:,.0f} / month")
+    st.metric("City avg EUR/sqm", f"EUR {city_mean_ppsm:.2f}")
 
-    with summary_col2:
-        if price_global:
-            st.metric("Price per sqm", f"EUR {price_global:.2f} / sqm")
-        st.metric("City average EUR/sqm", f"EUR {city_median_ppsm:.2f}")
-
-    if price_global and city_median_ppsm:
-        diff_pct = ((price_global - city_median_ppsm) / city_median_ppsm) * 100
+    if price_global and city_mean_ppsm:
+        diff_pct = ((price_global - city_mean_ppsm) / city_mean_ppsm) * 100
         badge = (
-            "Below market average"
+            "Below city mean"
             if diff_pct < -5
-            else "Around market average"
+            else "Around city mean"
             if diff_pct <= 5
-            else "Above market average"
+            else "Above city mean"
         )
         st.success(f"{badge} for {city}")
 
@@ -203,11 +206,14 @@ with tab_estimate:
     metric_col1.metric("Selected city", city)
     metric_col2.metric("Apartment profile", f"{size} sqm | {rooms} rooms")
     metric_col3.metric("Amenities selected", f"{amenities}/6")
+    st.caption(
+        "Compares the predicted price per sqm against the city average."
+    )
 
-    if est_monthly and city_median_ppsm:
+    if est_monthly and city_mean_ppsm:
         benchmark_frame = {
-            "Label": ["Your estimate", f"{city} median"],
-            "EUR/sqm": [price_global, city_median_ppsm],
+            "Label": ["Your estimate", f"{city} mean"],
+            "EUR/sqm": [price_global, city_mean_ppsm],
         }
         benchmark_fig = px.bar(
             benchmark_frame,
@@ -216,9 +222,9 @@ with tab_estimate:
             color="Label",
             color_discrete_map={
                 "Your estimate": "#d88a13",
-                f"{city} median": "#0c2d48",
+                f"{city} mean": "#0c2d48",
             },
-            title="Predicted price per sqm versus city benchmark",
+            title="Predicted price per sqm versus city mean",
         )
         benchmark_fig.update_layout(
             margin=dict(l=10, r=10, t=50, b=10),
@@ -234,7 +240,9 @@ with tab_explain:
 
     with explain_left:
         st.subheader(f"What matters most in {city}")
-        st.caption("Key factors that influence rent in this area")
+        st.caption(
+            "Longer bars indicate features with greater influence on the prediction in this market."
+        )
 
         shap_df = get_shap_ranking(state=state, city=city)
         if not shap_df.empty:
@@ -252,14 +260,14 @@ with tab_explain:
                 orientation="h",
                 color="mean_abs_shap",
                 color_continuous_scale="Blues",
-                labels={"mean_abs_shap": "Importance", "label": ""},
+                labels={"mean_abs_shap": "Relative influence", "label": ""},
             )
             fig.update_layout(
                 showlegend=False,
                 coloraxis_showscale=False,
                 margin=dict(l=10, r=10, t=10, b=10),
                 height=320,
-                xaxis_title="",
+                xaxis_title="Relative influence on prediction",
             )
             st.plotly_chart(fig, use_container_width=True)
         else:
@@ -267,7 +275,9 @@ with tab_explain:
 
     with explain_right:
         st.subheader(f"Rent spread in {city}")
-        st.caption("How the estimate sits within the city market")
+        st.caption(
+            "Shows where the predicted EUR/sqm sits within the full city distribution."
+        )
         city_data = raw_df.loc[raw_df["city"] == city, "price_per_sqm"].dropna()
         city_data = city_data[city_data.between(1, 50)]
         if len(city_data) > 10:
@@ -286,10 +296,10 @@ with tab_explain:
                     annotation_position="top right",
                 )
             fig2.add_vline(
-                x=city_median_ppsm,
+                x=city_mean_ppsm,
                 line_dash="dot",
                 line_color="#377117",
-                annotation_text="City average",
+                annotation_text="City mean",
                 annotation_position="top left",
             )
             fig2.update_layout(
@@ -304,6 +314,9 @@ with tab_explain:
             st.info("Not enough listings for a distribution chart.")
 
 with tab_match:
+    st.caption(
+        "Search by description or use the current apartment settings to find similar listings."
+    )
     match_tab1, match_tab2 = st.tabs(
         ["Describe What You Want", "Match My Apartment Profile"]
     )

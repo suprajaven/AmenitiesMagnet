@@ -24,6 +24,10 @@ metric_col1.metric("Rows in current slice", f"{len(filtered):,}")
 metric_col2.metric("Avg log EUR/sqm", f"{filtered['log_price_per_sqm'].mean():.3f}")
 metric_col3.metric("Median amenity score", f"{filtered['amenity_score'].median():.0f}")
 
+st.caption(
+    "These charts show how the model features behave in the transformed training data."
+)
+
 feature_band = make_quantile_bins(
     filtered[selected_feature],
     ["Low", "Lower-mid", "Upper-mid", "High"],
@@ -45,11 +49,17 @@ heatmap = px.density_heatmap(
     title=f"Average log price per sqm by {selected_feature} band and interior score",
 )
 heatmap.update_layout(margin=dict(l=20, r=20, t=60, b=20))
+st.caption(
+    "Darker cells indicate higher average log price per sqm for that combination."
+)
 st.plotly_chart(heatmap, use_container_width=True)
 
 chart_col1, chart_col2 = st.columns(2)
 
 with chart_col1:
+    st.caption(
+        "City ranking by average log price per sqm."
+    )
     city_rank = (
         model_df[model_df["city"].isin(top_cities)]
         .groupby("city", as_index=False)
@@ -69,6 +79,10 @@ with chart_col1:
     st.plotly_chart(rank_chart, use_container_width=True)
 
 with chart_col2:
+    st.caption(
+        "Correlation view of the retained numeric features."
+    )
+    st.info("Legend: red = positive correlation, blue = negative correlation, pale colors = weak correlation.")
     corr = filtered[MODEL_NUMERIC_FEATURES + ["log_price_per_sqm"]].corr(numeric_only=True)
     corr_chart = go.Figure(
         data=go.Heatmap(

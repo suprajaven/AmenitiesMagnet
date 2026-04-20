@@ -6,24 +6,29 @@ st.set_page_config(page_title="Amenities Magnet", layout="wide")
 st.title("Amenities Magnet")
 st.caption("Rental price intelligence for Germany")
 
-metric_cols = st.columns(3)
-metric_cols[0].metric("Listings", "268,632")
-metric_cols[1].metric("Cities", "419")
-metric_cols[2].metric("Markets", "16 states")
+st.markdown(
+    """
+    **About**
 
-nav1, nav2, nav3 = st.columns(3)
-nav1.info("Map View")
-nav2.info("Explore Listings")
-nav3.info("Rental Price Estimator")
+    Amenities Magnet predicts residential rental prices across German cities and explains
+    why a property costs what it does. Built on ImmoScout24 listings data, it combines
+    market exploration, explainable machine learning, and apartment matching in one dashboard.
+    """
+)
+
+about_metrics = st.columns(4)
+about_metrics[0].metric("Listings", "268,632")
+about_metrics[1].metric("Cities", "419")
+about_metrics[2].metric("States", "16")
+about_metrics[3].metric("User groups", "4")
+st.caption(
+    "Designed for tenants, investors, developers, and policymakers who want a clearer view of German rental markets."
+)
 
 if hasattr(st, "page_link"):
-    link1, link2, link3, link4 = st.columns(4)
-    link1.page_link("pages/map.py", label="Open Map")
-    link2.page_link("pages/explore.py", label="Explore Data")
-    link3.page_link("pages/predict.py", label="Open Predictor")
-    link4.page_link("pages/insights.py", label="Model Insights")
-
-with st.expander("About"):
-    st.write(
-        "Explore rental patterns, estimate apartment prices, and compare similar listings across Germany."
-    )
+    top_row = st.columns(2)
+    bottom_row = st.columns(2)
+    top_row[0].page_link("pages/map.py", label="Map View")
+    top_row[1].page_link("pages/explore.py", label="Explore Listings")
+    bottom_row[0].page_link("pages/predict.py", label="Price Estimator")
+    bottom_row[1].page_link("pages/insights.py", label="Model Insights")

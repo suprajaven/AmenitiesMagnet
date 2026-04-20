@@ -7,6 +7,10 @@ from utils import load_data
 st.title("Explore Listings")
 st.caption("Raw market view built from the original cleaned dataset")
 
+st.info(
+    "Use the filters to narrow the market by state and city. This page helps you inspect listing-level patterns before moving into prediction."
+)
+
 df = load_data()
 
 state_options = ["All"] + sorted(df["state"].dropna().unique().tolist())
@@ -22,13 +26,16 @@ if selected_city != "All":
 
 c1, c2, c3, c4 = st.columns(4)
 c1.metric("Listings", f"{len(filtered):,}")
-c2.metric("Median rent", f"EUR {filtered['baseRent'].median():,.0f}")
-c3.metric("Median EUR/sqm", f"{filtered['price_per_sqm'].median():.2f}")
+c2.metric("Mean rent", f"EUR {filtered['baseRent'].mean():,.0f}")
+c3.metric("Mean EUR/sqm", f"{filtered['price_per_sqm'].mean():.2f}")
 c4.metric("Avg amenity score", f"{filtered['amenity_score'].mean():.2f}")
 
 chart_col1, chart_col2 = st.columns(2)
 
 with chart_col1:
+    st.caption(
+        "Scatter view: each point is a listing. It shows how rent changes with apartment size and where high EUR/sqm listings sit."
+    )
     scatter = px.scatter(
         filtered.sample(min(3000, len(filtered)), random_state=42),
         x="livingSpace",
@@ -42,15 +49,18 @@ with chart_col1:
     st.plotly_chart(scatter, use_container_width=True)
 
 with chart_col2:
+    st.caption(
+        "City comparison: ranks the busiest cities in the current slice and shows their mean EUR/sqm."
+    )
     city_summary = (
         filtered.groupby("city", as_index=False)
-        .agg(median_price_per_sqm=("price_per_sqm", "median"), listings=("city", "size"))
+        .agg(mean_price_per_sqm=("price_per_sqm", "mean"), listings=("city", "size"))
         .sort_values("listings", ascending=False)
         .head(15)
     )
     city_bar = px.bar(
-        city_summary.sort_values("median_price_per_sqm"),
-        x="median_price_per_sqm",
+        city_summary.sort_values("mean_price_per_sqm"),
+        x="mean_price_per_sqm",
         y="city",
         color="listings",
         orientation="h",
@@ -61,6 +71,7 @@ with chart_col2:
     st.plotly_chart(city_bar, use_container_width=True)
 
 st.subheader("Sample listings")
+st.caption("Sample table: a quick look at individual listings in the current filtered market.")
 display_cols = [
     "city",
     "state",

@@ -132,6 +132,10 @@ def _build_pillar_map(frame, metric):
 st.title("Map View")
 st.caption("State market map")
 
+st.info(
+    "Deeper red means a higher value for the selected metric. Slightly taller spikes show stronger state-level intensity."
+)
+
 df = load_data()
 state_view = prepare_state_market_view(df).dropna(subset=["lat", "lon"]).copy()
 
@@ -149,9 +153,11 @@ map_col, rank_col = st.columns([1.9, 1])
 fig, chart_frame = _build_pillar_map(state_view, metric_choice)
 
 with map_col:
+    st.caption("Legend: light yellow = lower values, orange = mid-range values, deep red = higher values.")
     st.plotly_chart(fig, use_container_width=True)
 
 with rank_col:
+    st.caption("Ranking panel for the selected metric.")
     top_states = chart_frame.sort_values(metric_choice, ascending=False).copy()
     ranking = px.bar(
         top_states.head(8).sort_values(metric_choice),
@@ -189,6 +195,7 @@ table = chart_frame.sort_values("avg_price_per_sqm", ascending=False).rename(
 )
 
 st.subheader("State summary")
+st.caption("Table view: exact state-level values behind the map for quick comparison.")
 st.dataframe(
     table[["state", "Listings", "Avg EUR/sqm", "Median EUR/sqm", "Avg amenity score"]],
     use_container_width=True,
