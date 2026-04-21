@@ -51,6 +51,8 @@ To set up the project locally:
 
 ## ***Execution***
 
+Use the hosted prediction app here: [amenitiesmagnet.streamlit.app/predict](https://amenitiesmagnet.streamlit.app/predict)
+
 To launch the Streamlit dashboard:
 
 1. Open a terminal in the project directory:
@@ -74,15 +76,15 @@ To launch the Streamlit dashboard:
 
 ## ***Directory Structure:*** 
 ### Model Building
-1. [Data](https://github.gatech.edu/tbuttrick3/CSE6242_Project/tree/c53b4021a063e9c426a27100629bf621309d130c/Data) - *the building blocks of our empire!*
-2. [Code](https://github.gatech.edu/tbuttrick3/CSE6242_Project/tree/c53b4021a063e9c426a27100629bf621309d130c/Code) - *where the magic happens!* 
-3. [Analysis](https://github.gatech.edu/tbuttrick3/CSE6242_Project/tree/c53b4021a063e9c426a27100629bf621309d130c/Analysis) - *EDA notebooks, modelling scripts, and writeups live here.*
-4. [Visualizations](https://github.gatech.edu/tbuttrick3/CSE6242_Project/tree/c53b4021a063e9c426a27100629bf621309d130c/Visualizations) - *the home of all our pretty graphs.*
+1. [Data](https://github.com/suprajaven/AmenitiesMagnet/tree/main/CSE6242_Project/Data) - Datasets used for model development, evaluation, and dashboard inputs.
+2. [Code](https://github.com/suprajaven/AmenitiesMagnet/tree/main/CSE6242_Project/Code) - Application source code, data processing pipelines, and model implementation.
+3. [Analysis](https://github.com/suprajaven/AmenitiesMagnet/tree/main/CSE6242_Project/Analysis) - Exploratory analysis, modeling experiments, and supporting documentation.
+4. [Visualizations](https://github.com/suprajaven/AmenitiesMagnet/tree/main/CSE6242_Project/Visualizations) - Charts, figures, and other visual assets created for the project.
 
 
 ### Reporting:
-1. [Project Proposal](https://github.gatech.edu/tbuttrick3/CSE6242_Project/tree/c53b4021a063e9c426a27100629bf621309d130c/Project%20Proposal) - *where the silly idea started.*
-2. [Proposal Video](https://github.gatech.edu/tbuttrick3/CSE6242_Project/tree/c53b4021a063e9c426a27100629bf621309d130c/Proposal%20Video) - *where we first spoke about the silly idea.* 
-3. [Progress Report](https://github.gatech.edu/tbuttrick3/CSE6242_Project/tree/c53b4021a063e9c426a27100629bf621309d130c/Progress%20Report) - *when we realized what we had got ourselves into.*
-4. [Final Report](https://github.gatech.edu/tbuttrick3/CSE6242_Project/tree/c53b4021a063e9c426a27100629bf621309d130c/Final%20Report) - *We cried, worked, cried some more, worked again, on repeat.*
-5. [Final Video](https://github.gatech.edu/tbuttrick3/CSE6242_Project/tree/c53b4021a063e9c426a27100629bf621309d130c/Final%20Video) - *The light at the end of the tunnel*
+1. [Project Proposal](https://github.com/suprajaven/AmenitiesMagnet/tree/main/CSE6242_Project/Project%20Proposal) - Initial project concept, scope, and planned approach.
+2. [Proposal Video](https://github.com/suprajaven/AmenitiesMagnet/tree/main/CSE6242_Project/Proposal%20Video) - Video presentation accompanying the original proposal.
+3. [Progress Report](https://github.com/suprajaven/AmenitiesMagnet/tree/main/CSE6242_Project/Progress%20Report) - Mid-project update covering progress, challenges, and next steps.
+4. [Final Report](https://github.com/suprajaven/AmenitiesMagnet/tree/main/CSE6242_Project/Final%20Report) - Comprehensive summary of the methodology, results, and conclusions.
+5. [Final Video](https://github.com/suprajaven/AmenitiesMagnet/tree/main/CSE6242_Project/Final%20Video) - Final presentation highlighting the completed project and key findings.
