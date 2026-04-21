@@ -32,6 +32,41 @@ Built on ImmoScout24 listings data, the project trains city-stratified XGBoost a
 | **Developers** | Guide amenity investment with data-backed rankings |
 | **Policymakers** | Understand affordability drivers across cities |
 
+## ***Installation***
+
+To set up the project locally:
+
+1. Navigate to the project folder:
+   ```bash
+   cd CSE6242_Project
+   ```
+2. Install the required Python packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
+   If needed, you can use:
+   ```bash
+   python -m pip install -r requirements.txt
+   ```
+
+## ***Execution***
+
+To launch the Streamlit dashboard:
+
+1. Open a terminal in the project directory:
+   ```bash
+   cd CSE6242_Project
+   ```
+2. Run the application:
+   ```bash
+   streamlit run Code/app.py
+   ```
+3. The app will open in your browser. From there you can navigate to:
+   - Map View
+   - Explore Listings
+   - Rental Price Estimator
+   - Model Insights
+
 ---
 
 ## ***Members***   
