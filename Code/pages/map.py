@@ -2,7 +2,10 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
-from utils import load_data, prepare_state_market_view
+from utils import apply_branding, load_data, prepare_state_market_view
+
+
+apply_branding()
 
 
 def _build_pillar_map(frame, metric):

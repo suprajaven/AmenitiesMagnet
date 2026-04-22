@@ -1,7 +1,10 @@
 import plotly.express as px
 import streamlit as st
 
-from utils import load_data
+from utils import apply_branding, load_data
+
+
+apply_branding()
 
 
 st.title("Explore Listings")

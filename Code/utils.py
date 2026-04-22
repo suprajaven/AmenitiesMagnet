@@ -1,4 +1,5 @@
 from pathlib import Path
+import base64
 
 import pandas as pd
 import streamlit as st
@@ -8,6 +9,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = PROJECT_ROOT / "Data"
 ORIGINAL_DATA_PATH = DATA_DIR / "immo_data_clean.csv"
 TRANSFORMED_DATA_PATH = DATA_DIR / "immo_data_clean_transformed.csv"
+LOGO_PATH = PROJECT_ROOT / "Code" / "assets" / "charcoal-magnet-logo.png"
 
 MODEL_NUMERIC_FEATURES = [
     "serviceCharge",
@@ -58,6 +60,43 @@ def load_data():
 @st.cache_data
 def load_model_data():
     return pd.read_csv(TRANSFORMED_DATA_PATH)
+
+
+def apply_branding():
+    if LOGO_PATH.exists():
+        logo_base64 = base64.b64encode(LOGO_PATH.read_bytes()).decode("utf-8")
+        st.markdown(
+            f"""
+            <style>
+            .app-logo-top-right {{
+                position: fixed;
+                top: 3.25rem;
+                right: 1.5rem;
+                width: 84px;
+                height: 84px;
+                z-index: 999;
+            }}
+            .app-logo-top-right img {{
+                width: 100%;
+                height: auto;
+                display: block;
+                opacity: 0.95;
+            }}
+            @media (max-width: 768px) {{
+                .app-logo-top-right {{
+                    top: 3rem;
+                    right: 0.9rem;
+                    width: 60px;
+                    height: 60px;
+                }}
+            }}
+            </style>
+            <div class="app-logo-top-right">
+                <img src="data:image/png;base64,{logo_base64}" alt="Amenities Magnet logo" />
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
 
 
 def make_quantile_bins(series: pd.Series, labels: list[str]) -> pd.Series:

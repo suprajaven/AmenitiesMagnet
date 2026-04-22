@@ -2,7 +2,15 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
-from utils import MODEL_NUMERIC_FEATURES, load_model_data, make_quantile_bins
+from utils import (
+    MODEL_NUMERIC_FEATURES,
+    apply_branding,
+    load_model_data,
+    make_quantile_bins,
+)
+
+
+apply_branding()
 
 
 st.title("Modeling Insights")

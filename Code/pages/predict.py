@@ -20,7 +20,7 @@ from model_utils import (
     get_shap_ranking,
     predict_price,
 )
-from utils import comparable_listing_estimate, load_data
+from utils import apply_branding, comparable_listing_estimate, load_data
 
 
 FEATURE_LABELS = {
@@ -33,6 +33,9 @@ FEATURE_LABELS = {
     "serviceCharge": "Service charge",
     "lift": "Has lift",
 }
+
+
+apply_branding()
 
 
 st.title("Rental Price Estimator")

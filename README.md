@@ -53,6 +53,8 @@ To set up the project locally:
 
 Use the hosted prediction app here: [amenitiesmagnet.streamlit.app/predict](https://amenitiesmagnet.streamlit.app/predict)
 
+Demo video with installation and execution walkthrough: [YouTube](https://www.youtube.com/watch?v=bY5u8SnmNXQ)
+
 To launch the Streamlit dashboard:
 
 1. Open a terminal in the project directory:

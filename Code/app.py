@@ -1,7 +1,10 @@
 import streamlit as st
 
+from utils import apply_branding
+
 
 st.set_page_config(page_title="Amenities Magnet", layout="wide")
+apply_branding()
 
 st.title("Amenities Magnet")
 st.caption("Rental price intelligence for Germany")
